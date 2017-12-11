@@ -15,7 +15,7 @@ import com.ogaclejapan.flux.databinding.FragmentSearchResultBinding
 import com.ogaclejapan.flux.models.LoadingState
 import com.ogaclejapan.flux.modules.Components
 import com.ogaclejapan.flux.stores.UserSearchStore
-import com.ogaclejapan.flux.utils.ext.addOnChange
+import com.ogaclejapan.flux.utils.ext.addOnChangeWithValue
 import com.ogaclejapan.flux.utils.ext.addOnSimpleChange
 import javax.inject.Inject
 
@@ -50,8 +50,9 @@ class SearchResultFragment : BaseFragment(), MugenCallbacks {
       adapter = recyclerAdapter
     }
     Mugen.with(binding.searchResultList, this).start().loadMoreOffset = LOAD_OFFSET
+    binding.itemCount = store.userList.size
 
-    store.loadingState.addOnChange {
+    store.loadingState.addOnChangeWithValue {
       binding.isLoading = it.isLoading
     }.addTo(this)
 

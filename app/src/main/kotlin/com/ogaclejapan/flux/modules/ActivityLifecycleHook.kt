@@ -61,42 +61,36 @@ class ActivityLifecycleHook : LifecycleObserver {
   private fun dispatchOnCreate() {
     state = ON_CREATE
     onCreateHooks.forEach { it() }
-    onCreateHooks.clear()
   }
 
   @OnLifecycleEvent(Lifecycle.Event.ON_START)
   private fun dispatchOnStart() {
     state = ON_START
     onStartHooks.forEach { it() }
-    onStartHooks.clear()
   }
 
   @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
   private fun dispatchOnResume() {
     state = ON_RESUME
     onResumeHooks.forEach { it() }
-    onResumeHooks.clear()
   }
 
   @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
   private fun dispatchOnPause() {
     state = ON_PAUSE
     onPauseHooks.forEach { it() }
-    onPauseHooks.clear()
   }
 
   @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
   private fun dispatchOnStop() {
     state = ON_STOP
     onStopHooks.forEach { it() }
-    onStopHooks.clear()
   }
 
   @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
   private fun dispatchOnDestroy() {
     state = ON_DESTROY
     onDestroyHooks.forEach { it() }
-    onDestroyHooks.clear()
   }
 
   companion object {

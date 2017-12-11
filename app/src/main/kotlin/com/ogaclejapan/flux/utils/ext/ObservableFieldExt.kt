@@ -14,3 +14,8 @@ fun <T> ObservableField<T>.addOnChange(block: (T) -> Unit): Disposer {
     }
   })
 }
+
+fun <T> ObservableField<T>.addOnChangeWithValue(block: (T) -> Unit): Disposer {
+  block.invoke(get())
+  return addOnChange(block)
+}
