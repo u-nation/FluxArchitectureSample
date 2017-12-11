@@ -10,7 +10,7 @@ import com.squareup.leakcanary.RefWatcher
 import javax.inject.Inject
 
 
-open class BaseFragment : Fragment(), Disposer.Group {
+abstract class BaseFragment : Fragment(), Disposer.Group {
 
   private val disposerGroup = Disposers.newGroup()
 

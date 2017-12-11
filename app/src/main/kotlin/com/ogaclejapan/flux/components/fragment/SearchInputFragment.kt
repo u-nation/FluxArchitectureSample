@@ -16,6 +16,7 @@ import com.ogaclejapan.flux.models.LoadingState
 import com.ogaclejapan.flux.modules.Components
 import com.ogaclejapan.flux.stores.UserSearchStore
 import com.ogaclejapan.flux.utils.ext.addOnChange
+import com.ogaclejapan.flux.utils.ext.addOnChangeWithValue
 import javax.inject.Inject
 
 class SearchInputFragment : BaseFragment() {
@@ -46,7 +47,7 @@ class SearchInputFragment : BaseFragment() {
         .filter { !it.isEmpty() }
         .subscribe { action.findFollower(it) }
 
-    store.loadingState.addOnChange {
+    store.loadingState.addOnChangeWithValue {
       binding.searchButton.isEnabled = it != LoadingState.LOADING
     }.addTo(this)
   }

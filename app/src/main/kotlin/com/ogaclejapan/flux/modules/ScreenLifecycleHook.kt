@@ -24,17 +24,14 @@ class ScreenLifecycleHook {
   fun dispatchOnInit() {
     state = INIT
     onInitHooks.forEach { it() }
-    onInitHooks.clear()
   }
 
   fun dispatchOnCleared() {
     state = CLEARED
     onDestroyHooks.forEach { it() }
-    onDestroyHooks.clear()
   }
 
   companion object {
-
     private val NONE = 0
     private val INIT = 1
     private val CLEARED = 2

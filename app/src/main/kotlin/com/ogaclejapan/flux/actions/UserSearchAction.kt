@@ -7,10 +7,8 @@ import com.ogaclejapan.flux.events.SearchResultListChangedEvent
 import com.ogaclejapan.flux.models.LoadingState
 import com.ogaclejapan.flux.modules.ActivityScope
 import io.reactivex.schedulers.Schedulers
-
-import javax.inject.Inject
-
 import timber.log.Timber
+import javax.inject.Inject
 
 @ActivityScope
 class UserSearchAction @Inject constructor(
@@ -25,8 +23,8 @@ class UserSearchAction @Inject constructor(
         .subscribe(
             { users ->
               dispatcher.dispatch(
-                  SearchResultListChangedEvent(userId, users, users.nextPage()))
-              dispatchState(if (users.hasMore())
+                  SearchResultListChangedEvent(userId, users, users.nextPage))
+              dispatchState(if (users.hasMore)
                 LoadingState.LOADABLE
               else
                 LoadingState.FINISHED)
@@ -37,7 +35,5 @@ class UserSearchAction @Inject constructor(
             })
   }
 
-  private fun dispatchState(state: LoadingState) {
-    dispatcher.dispatch(SearchLoadingStateChangedEvent(state))
-  }
+  private fun dispatchState(state: LoadingState) = dispatcher.dispatch(SearchLoadingStateChangedEvent(state))
 }

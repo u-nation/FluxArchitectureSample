@@ -8,13 +8,11 @@ import com.ogaclejapan.flux.modules.ActivityScope
 import javax.inject.Inject
 
 @ActivityScope
-class ActivityAction @Inject constructor(private val activity: AppCompatActivity) {
+class ActivityAction @Inject constructor(
+        private val activity: AppCompatActivity
+) {
 
-  fun showUserDetail(user: User) {
-    show(UserDetailActivity.newIntent(activity, user.login, user.avatar_url))
-  }
+  fun showUserDetail(user: User) = show(UserDetailActivity.newIntent(activity, user.login, user.avatar_url))
 
-  private fun show(intent: Intent) {
-    activity.startActivity(intent)
-  }
+  private fun show(intent: Intent) = activity.startActivity(intent)
 }
