@@ -25,8 +25,8 @@ class UserSearchAction @Inject constructor(
         .subscribe(
             { users ->
               dispatcher.dispatch(
-                  SearchResultListChangedEvent(userId, users, users.nextPage()))
-              dispatchState(if (users.hasMore())
+                  SearchResultListChangedEvent(userId, users, users.nextPage))
+              dispatchState(if (users.hasMore)
                 LoadingState.LOADABLE
               else
                 LoadingState.FINISHED)

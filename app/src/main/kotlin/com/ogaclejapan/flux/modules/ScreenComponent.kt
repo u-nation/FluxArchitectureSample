@@ -2,6 +2,9 @@ package com.ogaclejapan.flux.modules
 
 import dagger.Subcomponent
 
+/**
+ * ScreenComponent create object which survive configuration change
+ * */
 @ScreenScope
 @Subcomponent(modules = [ScreenModule::class])
 interface ScreenComponent {

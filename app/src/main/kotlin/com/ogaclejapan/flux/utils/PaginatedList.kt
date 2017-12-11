@@ -1,7 +1,7 @@
 package com.ogaclejapan.flux.utils
 
 interface PaginatedList<out E> : List<E> {
-  fun hasMore(): Boolean
-  fun nextPage(): Int
-  fun lastPage(): Int
+  val hasMore: Boolean
+  val nextPage: Int
+  val lastPage: Int
 }

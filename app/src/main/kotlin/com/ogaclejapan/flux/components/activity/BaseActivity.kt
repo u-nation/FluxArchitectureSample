@@ -20,7 +20,6 @@ abstract class BaseActivity : AppCompatActivity(), ScreenComponent.Factory, Acti
   private val disposerGroup = Disposers.newGroup()
   private val activityLifecycleHook: ActivityLifecycleHook = ActivityLifecycleHook()
 
-  /*画面回転を生き抜くコンポーネント*/
   override val screenComponent: ScreenComponent
     get() = ViewModelProviders.of(this).get<ScreenViewModel>().screenComponent
 
@@ -39,8 +38,9 @@ abstract class BaseActivity : AppCompatActivity(), ScreenComponent.Factory, Acti
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when (item.itemId) {
-      android.R.id.home -> finish()
+    if (item.itemId == android.R.id.home) {
+      finish()
+      return true
     }
     return super.onOptionsItemSelected(item)
   }
