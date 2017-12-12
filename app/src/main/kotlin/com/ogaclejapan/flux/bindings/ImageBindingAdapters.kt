@@ -7,7 +7,6 @@ import com.bumptech.glide.request.RequestOptions
 
 class ImageBindingAdapters {
   companion object {
-
     @JvmStatic
     @BindingAdapter("image_crop_circle")
     fun loadImage(view: ImageView, url: String?) {
