@@ -9,10 +9,12 @@ import javax.inject.Inject
 
 @ActivityScope
 class ActivityAction @Inject constructor(
-        private val activity: AppCompatActivity
+    private val activity: AppCompatActivity
 ) {
 
-  fun showUserDetail(user: User) = show(UserDetailActivity.newIntent(activity, user.login, user.avatar_url))
+  fun showUserDetail(user: User) {
+    show(UserDetailActivity.newIntent(activity, user.login, user.avatar_url))
+  }
 
   private fun show(intent: Intent) = activity.startActivity(intent)
 }

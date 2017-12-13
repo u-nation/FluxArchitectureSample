@@ -15,7 +15,6 @@ import com.ogaclejapan.flux.databinding.FragmentSearchInputBinding
 import com.ogaclejapan.flux.models.LoadingState
 import com.ogaclejapan.flux.modules.Components
 import com.ogaclejapan.flux.stores.UserSearchStore
-import com.ogaclejapan.flux.utils.ext.addOnChange
 import com.ogaclejapan.flux.utils.ext.addOnChangeWithValue
 import javax.inject.Inject
 
