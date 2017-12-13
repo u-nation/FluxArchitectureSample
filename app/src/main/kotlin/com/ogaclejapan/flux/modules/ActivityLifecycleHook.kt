@@ -3,8 +3,27 @@ package com.ogaclejapan.flux.modules
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.OnLifecycleEvent
+import com.ogaclejapan.flux.utils.Runnable
 
 class ActivityLifecycleHook : LifecycleObserver {
+
+  companion object {
+
+    private val NONE = 0
+    private val CREATE = 1
+    private val START = 1 shl 1
+    private val RESUME = 1 shl 2
+    private val PAUSE = 1 shl 3
+    private val STOP = 1 shl 4
+    private val DESTROY = 1 shl 5
+
+    private val ON_CREATE = CREATE
+    private val ON_START = CREATE or START
+    private val ON_RESUME = CREATE or START or RESUME
+    private val ON_PAUSE = PAUSE
+    private val ON_STOP = PAUSE or STOP
+    private val ON_DESTROY = PAUSE or STOP or DESTROY
+  }
 
   private var state = NONE
 
@@ -92,24 +111,4 @@ class ActivityLifecycleHook : LifecycleObserver {
     state = ON_DESTROY
     onDestroyHooks.forEach { it() }
   }
-
-  companion object {
-
-    private val NONE = 0
-    private val CREATE = 1
-    private val START = 1 shl 1
-    private val RESUME = 1 shl 2
-    private val PAUSE = 1 shl 3
-    private val STOP = 1 shl 4
-    private val DESTROY = 1 shl 5
-
-    private val ON_CREATE = CREATE
-    private val ON_START = CREATE or START
-    private val ON_RESUME = CREATE or START or RESUME
-    private val ON_PAUSE = PAUSE
-    private val ON_STOP = PAUSE or STOP
-    private val ON_DESTROY = PAUSE or STOP or DESTROY
-  }
 }
-
-typealias Runnable = () -> Unit

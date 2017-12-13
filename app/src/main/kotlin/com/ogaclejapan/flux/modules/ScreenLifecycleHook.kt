@@ -1,6 +1,14 @@
 package com.ogaclejapan.flux.modules
 
+import com.ogaclejapan.flux.utils.Runnable
+
 class ScreenLifecycleHook {
+
+  companion object {
+    private val NONE = 0
+    private val INIT = 1
+    private val CLEARED = 2
+  }
 
   private var state = NONE
 
@@ -29,11 +37,5 @@ class ScreenLifecycleHook {
   fun dispatchOnCleared() {
     state = CLEARED
     onDestroyHooks.forEach { it() }
-  }
-
-  companion object {
-    private val NONE = 0
-    private val INIT = 1
-    private val CLEARED = 2
   }
 }
