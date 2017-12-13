@@ -1,6 +1,5 @@
 package com.ogaclejapan.flux.modules
 
-import com.ogaclejapan.flux.App
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,7 +12,4 @@ interface AppComponent {
   }
 
   fun plus(module: ScreenModule): ScreenComponent
-
-  fun inject(app: App)
-
 }

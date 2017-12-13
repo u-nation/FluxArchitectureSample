@@ -30,7 +30,6 @@ open class App : Application(), AppComponent.Factory {
 
   override fun onCreate() {
     super.onCreate()
-    appComponent.inject(this)
     initialize()
   }
 
