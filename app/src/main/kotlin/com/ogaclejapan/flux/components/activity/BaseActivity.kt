@@ -28,12 +28,33 @@ abstract class BaseActivity : AppCompatActivity(), ScreenComponent.Factory, Acti
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    lifecycle.addObserver(activityLifecycleHook)
     Components.forActivity(this).inject(this)
+    activityLifecycleHook.dispatchOnCreate()
+  }
+
+  override fun onStart() {
+    super.onStart()
+    activityLifecycleHook.dispatchOnStart()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    activityLifecycleHook.dispatchOnResume()
+  }
+
+  override fun onPause() {
+    super.onPause()
+    activityLifecycleHook.dispatchOnPause()
+  }
+
+  override fun onStop() {
+    super.onStop()
+    activityLifecycleHook.dispatchOnStop()
   }
 
   override fun onDestroy() {
     super.onDestroy()
+    activityLifecycleHook.dispatchOnDestroy()
     refWatcher.watch(this)
   }
 

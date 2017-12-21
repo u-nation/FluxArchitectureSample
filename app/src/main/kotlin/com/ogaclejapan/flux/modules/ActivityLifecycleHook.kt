@@ -1,11 +1,8 @@
 package com.ogaclejapan.flux.modules
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.OnLifecycleEvent
 import com.ogaclejapan.flux.utils.Runnable
 
-class ActivityLifecycleHook : LifecycleObserver {
+class ActivityLifecycleHook {
 
   companion object {
 
@@ -76,38 +73,32 @@ class ActivityLifecycleHook : LifecycleObserver {
     }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-  private fun dispatchOnCreate() {
+  fun dispatchOnCreate() {
     state = ON_CREATE
     onCreateHooks.forEach { it() }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_START)
-  private fun dispatchOnStart() {
+  fun dispatchOnStart() {
     state = ON_START
     onStartHooks.forEach { it() }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-  private fun dispatchOnResume() {
+  fun dispatchOnResume() {
     state = ON_RESUME
     onResumeHooks.forEach { it() }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-  private fun dispatchOnPause() {
+  fun dispatchOnPause() {
     state = ON_PAUSE
     onPauseHooks.forEach { it() }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-  private fun dispatchOnStop() {
+  fun dispatchOnStop() {
     state = ON_STOP
     onStopHooks.forEach { it() }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-  private fun dispatchOnDestroy() {
+  fun dispatchOnDestroy() {
     state = ON_DESTROY
     onDestroyHooks.forEach { it() }
   }
